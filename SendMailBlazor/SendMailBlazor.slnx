@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ResendMailer/ResendMailer.csproj" Id="bd938c7e-a26f-4c8a-92fa-7a8b4b154b28" />
+  <Project Path="SendMailBlazor/SendMailBlazor.csproj" />
+</Solution>
