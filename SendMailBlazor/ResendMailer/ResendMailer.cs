@@ -18,13 +18,15 @@ namespace EmailService
         {
             var resp = await Resend.EmailSendAsync(new EmailMessage()
             {
-                From = "onboarding@resend.dev",
+                From = "tester@testing.worrynotsmp.xyz", // Namecheap domain I had lying around - housebuilder21
                 To = "dr.delpod@gmail.com",
                 Subject = "Hello World",
                 HtmlBody = "<p>Congrats on sending your <strong>first email</strong>!</p>",
             });
 
-            return resp.Success;
+            if (resp.Success) return true;
+            
+            throw resp.Exception;
         }
     }
 }
