@@ -8,16 +8,25 @@ namespace SendMailBlazor.Components.Pages
         // Fields
         string SuccessMsg { get; set; } = string.Empty;
 
+        string ErrorDescription { get; set; }
+
         // Properties
         [Inject]
         ResendMailer ResendMailer { get; set; }
 
         public async void SendMail()
         {
-            if (await ResendMailer.SendEmail())
+            try
             {
-                Console.WriteLine("Mail sent!");
-                SuccessMsg = "Mail sent!";
+                if (await ResendMailer.SendEmail())
+                {
+                    SuccessMsg = "Mail sent!";
+                    Console.WriteLine("Mail sent!");
+                }
+            }
+            catch (Exception e)
+            {
+                ErrorDescription = e.Message;
             }
         }
     }

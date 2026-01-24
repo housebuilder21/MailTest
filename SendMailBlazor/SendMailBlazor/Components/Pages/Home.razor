@@ -4,6 +4,14 @@
 
 <h1>Blazor Mail Testing</h1>
 
-<button @onclick="SendMail">Send Mail</button>
+<button class="btn btn-primary" @onclick="SendMail">Send Mail</button>
 
 <p>@SuccessMsg</p>
+
+@if (!string.IsNullOrWhiteSpace(ErrorDescription))
+{
+	<div>
+		<h3>Error:</h3>
+		<p>@ErrorDescription</p>
+	</div>
+}
