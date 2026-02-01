@@ -24,7 +24,15 @@
 			<InputTextArea id="message" class="form-control" @bind-Value="message" />
 		</div>
 
-		<button class="m-4 mt-0 btn btn-primary w-auto" @onclick="SendMail">Send Mail</button>
+		@if (awaitingMessage)
+		{
+			<div class="spinner-border text-primary"></div>
+		} 
+		else
+		{
+			<button class="m-4 mt-0 btn btn-primary w-auto" @onclick="SendMail">Send Mail</button>
+		}
+
 		@if (!string.IsNullOrEmpty(SuccessMsg))
 		{
 			<p class="alert alert-success">@SuccessMsg</p>

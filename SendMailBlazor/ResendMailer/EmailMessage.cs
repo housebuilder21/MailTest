@@ -62,7 +62,9 @@ namespace EmailService
                 htmlString = htmlString.Replace($"[{name}]", (string?)value);
             }
 
-            // TODO: Check and throw exception for missing variables in the template.
+            // ~~TODO: Check and throw exception for missing variables in the template~~.
+            // Actually, if there were anything else in [] that had something else that wasn't meant to be a variable,
+            // it'll throw an exception anywas. That's not good.
 
             // Insert Values
             To = to;

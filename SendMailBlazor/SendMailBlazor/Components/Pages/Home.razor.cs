@@ -9,6 +9,7 @@ namespace SendMailBlazor.Components.Pages
         const string _SENDER_ADDRESS = "tester@testing.worrynotsmp.xyz"; // Namecheap domain I had lying around - housebuilder21
         string recipient = string.Empty;
         string message = string.Empty;
+        bool awaitingMessage = false;
 
         string SuccessMsg { get; set; } = string.Empty;
 
@@ -26,18 +27,24 @@ namespace SendMailBlazor.Components.Pages
             try
             {
                 //string fullMessage = $"<p><strong>Hello there!</strong></p>\n<p>This email is a test message sent from a Blazor app using Resend's email API. The sender has an additional message below:</p>\n{message}";
-                //string textVersion = $"Hello there!\nThis email is a test message sent from a Blazor app using Resend's email API. The sender has an additional message below:\n{message}";
+                string messageDocument = "Components/EmailTemplates/test-html.html"; //File.ReadAllText("Components/EmailTemplates/htmlpage.html");
+                string textVersion = $"Hello there!\nThis email is a test message sent from a Blazor app using Resend's email API. The sender has an additional message below:\n{message}";
+                awaitingMessage = true;
 
-                //await ResendMailer.SendEmailAsync(new EmailMessage() 
-                //{ 
-                //    From = _SENDER_ADDRESS,
-                //    To = recipient,
-                //    HtmlBody = fullMessage,
-                //    PlainTextBody = textVersion,
-                //    Subject = "Test Email"
-                //});
+                await ResendMailer.SendEmailAsync(new EmailMessage(
+                    recipient, // To
+                    _SENDER_ADDRESS, // From
+                    "Test Mail", // Subject
+                    textVersion, // Plain Text Version
+                    messageDocument, // Filepath to Template
+                    new Dictionary<string, object> // Variables to Replace
+                    {
+                        { "MESSAGE", message }
+                    }
+                    ));
 
                 SuccessMsg = "Mail sent!";
+                awaitingMessage = false;
                 StateHasChanged(); // We need to put this in, otherwise the success message doesn't get shown. :P
                 Console.WriteLine("Mail sent!");
 
@@ -45,6 +52,8 @@ namespace SendMailBlazor.Components.Pages
             catch (Exception e)
             {
                 ErrorDescription = e.Message;
+                awaitingMessage = false;
+                StateHasChanged();
             }
         }
     }
