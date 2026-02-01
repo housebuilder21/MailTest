@@ -1,4 +1,5 @@
 <Solution>
-  <Project Path="ResendMailer/ResendMailer.csproj" Id="bd938c7e-a26f-4c8a-92fa-7a8b4b154b28" />
+  <Project Path="EmailMessageTesting/EmailMessageTesting.csproj" Id="a034d6dd-e2d8-40a4-90b3-2f5ec50fc1d0" />
+  <Project Path="ResendMailer/EmailService.csproj" Id="bd938c7e-a26f-4c8a-92fa-7a8b4b154b28" />
   <Project Path="SendMailBlazor/SendMailBlazor.csproj" />
 </Solution>

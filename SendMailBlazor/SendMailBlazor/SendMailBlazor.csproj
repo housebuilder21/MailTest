@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ResendMailer\ResendMailer.csproj" />
+    <ProjectReference Include="..\ResendMailer\EmailService.csproj" />
   </ItemGroup>
 
 </Project>
