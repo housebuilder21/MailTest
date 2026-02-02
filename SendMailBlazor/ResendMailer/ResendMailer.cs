@@ -1,5 +1,4 @@
 ﻿using Resend;
-using EmailService;
 
 namespace EmailService
 {
@@ -30,7 +29,7 @@ namespace EmailService
         /// <param name="message"></param>
         /// <exception cref="Resend.ResendException">Throws if Resend couldn't send the email.</exception>
         /// <returns>True if the email was sent successfully. Throws an Exception otherwise, featuring information from the failure response.</returns>
-        public async Task SendEmailAsync(EmailService.EmailMessage emailMessage)
+        public async Task SendEmailAsync(EmailMessage emailMessage)
         {
             try
             {
