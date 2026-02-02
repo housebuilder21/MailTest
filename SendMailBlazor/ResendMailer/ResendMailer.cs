@@ -23,7 +23,8 @@ namespace EmailService
         // Methods
         /// <summary>
         /// Sends out an email to the given recipient with a message.
-        /// This is the base method used to send emails. See the template
+        /// This is the base method used to send emails. See the Home.razor
+        /// code to see how this works or <seealso cref="EmailMessage"/>.
         /// </summary>
         /// <param name="recipient">The email address to send to.</param>
         /// <param name="message"></param>
