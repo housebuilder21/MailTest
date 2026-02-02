@@ -7,7 +7,10 @@ namespace SendMailBlazor.Components.Pages
     {
         // Fields
         /*
-            It is important to have subdomains for different areas of 
+            It is important to have subdomains for different areas in which
+            the emails are sent [e.g. registration, accounts, support, etc.].
+            However, if you're using the free version of Resend, only one can
+            be used :P
          */
         private const string _SENDER_ADDRESS = "tester@testing.worrynotsmp.xyz"; // Namecheap domain I had lying around - housebuilder21
         
