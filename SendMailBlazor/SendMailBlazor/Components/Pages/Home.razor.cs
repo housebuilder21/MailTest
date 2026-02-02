@@ -17,7 +17,7 @@ namespace SendMailBlazor.Components.Pages
 
         // Properties
         [Inject] // Inject the mailing service.
-        ResendMailer ResendMailer { get; set; } = default!;
+        IEmailingService EmailService { get; set; } = default!;
 
         /// <summary>
         /// Button function to send the email. The written recipient and message gets passed to the email service for sending.
@@ -31,7 +31,7 @@ namespace SendMailBlazor.Components.Pages
                 string textVersion = $"Hello there!\nThis email is a test message sent from a Blazor app using Resend's email API. The sender has an additional message below:\n{message}";
                 awaitingMessage = true;
 
-                await ResendMailer.SendEmailAsync(new EmailMessage(
+                await EmailService.SendEmailAsync(new EmailMessage(
                     recipient, // To
                     _SENDER_ADDRESS, // From
                     "Test Mail", // Subject

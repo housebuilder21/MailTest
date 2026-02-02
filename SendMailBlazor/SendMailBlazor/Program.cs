@@ -14,7 +14,7 @@ if (apiKey == null)
 {
     throw new ArgumentNullException("An API Key must be set!");
 }
-builder.Services.AddSingleton(new ResendMailer(apiKey));
+builder.Services.AddSingleton<IEmailingService>(new ResendMailer(apiKey));
 
 var app = builder.Build();
 
